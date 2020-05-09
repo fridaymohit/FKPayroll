@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Emplist{
-	private static Hashtable emp = new Hashtable();
+	private static Hashtable<Integer,employee> emp = new Hashtable<Integer,employee>();
  	
 	public static void addemp(){
 
@@ -27,9 +27,11 @@ class Emplist{
 
 		employee e = new employee(name,emp_type,pay_type,address,bank_acc,per_hour,flat_salary,com_rate);
 		emp.put(new Integer(e.getID()),e);
+		System.out.println("Employee added successfully");
 
 	}
 	public static void showemp(){
+		System.out.println("Employees are :");
 		Enumeration<Integer> enumeration = emp.keys();
 		while(enumeration.hasMoreElements()){
 			Integer key = enumeration.nextElement();
@@ -44,6 +46,11 @@ class Emplist{
 		else{
 			emp.remove(k);
 			System.out.println("Emloyeee record deleted successfully");
+			union.removetounion(id);
 		}
+	}
+	public static employee getemp(int id){
+		Integer k = new Integer(id);
+		return emp.get(k);
 	}
 }

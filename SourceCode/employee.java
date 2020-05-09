@@ -15,6 +15,7 @@ class employee{
 	private int flat_salary;
 	private int sales;
 	private double com_rate; 
+	private int uni_due;
 	employee(String name,int emp_type,int pay_type,String address,String bank_acc,int per_hour,int flat_salary,double com_rate){
 		this.name = name;
 		this.emp_type = emp_type;
@@ -70,6 +71,9 @@ class employee{
 	}
 	public void delemp(){
 			this.is_active = false;
+	}
+	public void changeunidue(int k){
+			this.uni_due = k;
 	}
 
 }
