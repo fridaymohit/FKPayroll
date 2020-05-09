@@ -1,22 +1,11 @@
 
-enum Emp_Type{
-	HOURLY,
-	FLAT,
-	COMMISIONED
-}
-enum Pay_Type{
-	POSTAL,
-	PAYMASTER,
-	BANK
-}
-
 class employee{
 	private static int EID = 1;
 	private int Emp_id;
 	private boolean is_active;
 	private String name;
-	private Emp_Type emp_type;   
-	private Pay_Type pay_type;
+	private int emp_type;   
+	private int pay_type;
 	private String address;
 	private String bank_acc;
 	private int curr_bal;
@@ -26,7 +15,7 @@ class employee{
 	private int flat_salary;
 	private int sales;
 	private double com_rate; 
-	employee(String name,Emp_Type emp_type,Pay_Type pay_type,String address,String bank_acc,int per_hour,int flat_salary,double com_rate){
+	employee(String name,int emp_type,int pay_type,String address,String bank_acc,int per_hour,int flat_salary,double com_rate){
 		this.name = name;
 		this.emp_type = emp_type;
 		this.pay_type = pay_type;
@@ -43,8 +32,11 @@ class employee{
 		EID++;
 		this.is_active = true;
 	}
-	public void changeemptype(Emp_Type emp_type){
+	public void changeemptype(int emp_type){
 			this.emp_type = emp_type;
+	}
+	public int getID(){
+			return this.Emp_id;
 	}
 	public void showdetails(){
 			System.out.println("Emp_id : " + Emp_id);
@@ -55,10 +47,10 @@ class employee{
 			System.out.println("Per Hour salary : " + per_hour);
 			System.out.println("Flat salary : " + flat_salary);
 			System.out.println("Comission Rate : " + com_rate);
-			if(emp_type == Emp_Type.HOURLY) System.out.println("Current balance : " + curr_bal);
-			if(emp_type == Emp_Type.COMMISIONED) System.out.println("Sale : " + sales);
+			if(emp_type == 0) System.out.println("Current balance : " + curr_bal);
+			if(emp_type == 2) System.out.println("Sale : " + sales);
 	}
-	public void changepaytype(Pay_Type pay_type){
+	public void changepaytype(int pay_type){
 			this.pay_type = pay_type;
 	}
 	public void changebank(String s){
