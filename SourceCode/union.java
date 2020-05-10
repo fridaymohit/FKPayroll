@@ -1,27 +1,46 @@
 import java.util.*;
 
 class union{
-	private static int weekly_due=0;
-	private static int charges = 0;
+	
 	private static Hashtable<Integer,employee> unimem = new Hashtable<Integer,employee>();
-	public static void setweekdue(int k){
-		weekly_due = k;
+	
+	public static void addcharge(){
 		Enumeration<Integer> enumeration = unimem.keys();
+		Scanner obj = new Scanner(System.in);
 		while(enumeration.hasMoreElements()){
 			Integer key = enumeration.nextElement();
-			employee e = unimem.get(key);
-			e.changeunidue(k);
+			System.out.println("amount of union charge for E_id : "+key );
+			double k = obj.nextDouble();
+			(unimem.get(key.intValue())).addcharge(k);
 		}
+
 	}
-	public static void addcharge(int k){
-		charges = charges + k;
+	public static void getcharges(){
+		Enumeration<Integer> enumeration = unimem.keys();
+		Scanner obj = new Scanner(System.in);
+		while(enumeration.hasMoreElements()){
+			Integer key = enumeration.nextElement();
+			double bal = (unimem.get(key.intValue())).getbalance();
+			double charge = (unimem.get(key.intValue())).getcharge();
+			double week_due = (unimem.get(key.intValue())).getunidue();
+			if(bal>=charge+week_due){
+				bal = bal - charge - week_due;
+				System.out.println("Rs "+bal + "is trasfered to E_id:" +key.intValue());
+				bal = 0;
+				(unimem.get(key.intValue())).addcharge(-charge);
+			}
+			else{
+				charge = charge + week_due - bal;
+				(unimem.get(key.intValue())).addcharge(week_due - bal);
+				bal = 0;
+			}
+			(unimem.get(key.intValue())).setbalance(bal);
+			
+			
+		}
+
 	}
-	public static int getCharge(){
-		return charges;
-	}
-	public static void resetcharge(){
-		charges = 0;
-	}
+	
 	public static void addtounion(int k){
 		Integer id = new Integer(k);
 		if(unimem.get(id)!=null){

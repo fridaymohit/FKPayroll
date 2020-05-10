@@ -8,15 +8,16 @@ class employee{
 	private int pay_type;
 	private String address;
 	private String bank_acc;
-	private int curr_bal;
+	private double curr_bal;
 	private int day_count;
 	private int fri_cnt;
-	private int per_hour;
-	private int flat_salary;
-	private int sales;
+	private double per_hour;
+	private double flat_salary;
+	private double sales;
 	private double com_rate; 
-	private int uni_due;
-	employee(String name,int emp_type,int pay_type,String address,String bank_acc,int per_hour,int flat_salary,double com_rate){
+	private double uni_due;
+	private double charge;
+	employee(String name,int emp_type,int pay_type,String address,String bank_acc,double per_hour,double flat_salary,double com_rate){
 		this.name = name;
 		this.emp_type = emp_type;
 		this.pay_type = pay_type;
@@ -36,6 +37,9 @@ class employee{
 	public void changeemptype(int emp_type){
 			this.emp_type = emp_type;
 	}
+	public int getemptype(){
+			return emp_type;
+	}
 	public int getID(){
 			return this.Emp_id;
 	}
@@ -50,6 +54,8 @@ class employee{
 			System.out.println("Comission Rate : " + com_rate);
 			if(emp_type == 0) System.out.println("Current balance : " + curr_bal);
 			if(emp_type == 2) System.out.println("Sale : " + sales);
+			System.out.println("weekly due charge for union : " + uni_due);
+			System.out.println("Charges remaining to pay to union : " + charge);
 	}
 	public void changepaytype(int pay_type){
 			this.pay_type = pay_type;
@@ -63,17 +69,53 @@ class employee{
 	public void changecomission(double com_rate){
 			this.com_rate = com_rate;
 	}
-	public void changeflatsalary(int flat_salary){
+	public double getcomission(){
+			return com_rate;
+	}
+	public void changeflatsalary(double flat_salary){
 			this.flat_salary = flat_salary;
 	}
-	public void changehoursalary(int per_hour){
+	public double getflat(){
+			return flat_salary;
+	}
+	public void changehoursalary(double per_hour){
 			this.per_hour = per_hour;
+	}
+	public double gethour(){
+			return per_hour;
 	}
 	public void delemp(){
 			this.is_active = false;
 	}
-	public void changeunidue(int k){
+	public void changeunidue(double k){
 			this.uni_due = k;
+	}
+	public double getunidue(){
+			return uni_due;
+	}
+	public void addcharge(double k){
+			charge = charge + k;
+	}
+	public double getcharge(){
+			return charge;
+	}
+	public double getbalance(){
+			return curr_bal;
+	}
+	public void setbalance(double k){
+			curr_bal = k;
+	}
+	public double getsales(){
+			return sales;
+	}
+	public void setsales(double k){
+			sales = k;
+	}
+	public int getfricnt(){
+			return fri_cnt;
+	}
+	public void setfricnt(int k){
+			fri_cnt = k;
 	}
 
 }
